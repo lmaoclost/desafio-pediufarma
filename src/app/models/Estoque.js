@@ -22,6 +22,27 @@ class Estoque extends Model {
       }
     );
   }
+
+  VerificaPromocao(listaEstoque) {
+    const estoque = [];
+    listaEstoque.forEach((item) => {
+      if (
+        item.inipromo <= Date.now() &&
+        item.fimpromo >= Date.now() &&
+        item.desconto !== 0 &&
+        item.desconto <= item.preco
+      ) {
+        item.preco = item.desconto;
+      }
+
+      estoque.push({
+        ean: item.barra,
+        preco: item.preco,
+        estoque: item.quantidade,
+      });
+    });
+    return estoque;
+  }
 }
 
 export default Estoque;

@@ -18,24 +18,9 @@ class EstoqueController {
       },
     });
 
-    const estoque = [];
+    const verificaEstoque = new Estoque();
 
-    listaEstoque.forEach((item) => {
-      if (
-        item.inipromo <= Date.now() &&
-        item.fimpromo >= Date.now() &&
-        item.desconto !== 0 &&
-        item.desconto <= item.preco
-      ) {
-        item.preco = item.desconto;
-      }
-
-      estoque.push({
-        ean: item.barra,
-        preco: item.preco,
-        estoque: item.quantidade,
-      });
-    });
+    const estoque = verificaEstoque.VerificaPromocao(listaEstoque);
 
     return res.json({ estoque });
   }

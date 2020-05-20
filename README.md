@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Yarn, NodeJS the Database Sample running in your machine - I'm using Docker for this part -, and a text editor. I'm using VSCode. Check the ./src/config/database.js for the Database credentials.
+Yarn, NodeJS the Database Sample running in your machine (I'm using Docker for this part) and a text editor. I'm using VSCode. Check the ./src/config/database.js for the Database credentials.
 
 ## Installing
 cd to the cloned folder

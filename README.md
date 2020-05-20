@@ -1,6 +1,6 @@
 # PediuFarma Challenge
 
-Project for a challenge that has the purpose to make a script that returns a Json for given a Database.
+Project for a challenge that has the purpose to make a script that returns a Json for a given Database. I'm using NodeJS because It's a great library for this kind of project and a personal challenge.
 
 ## Getting Started
 

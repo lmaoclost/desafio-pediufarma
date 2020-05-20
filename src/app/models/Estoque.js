@@ -10,6 +10,8 @@ class Estoque extends Model {
         },
         barra: Sequelize.STRING,
         desconto: Sequelize.DOUBLE,
+        inipromo: Sequelize.DATE,
+        fimpromo: Sequelize.DATE,
         preco: Sequelize.DOUBLE,
         quantidade: Sequelize.DOUBLE,
       },

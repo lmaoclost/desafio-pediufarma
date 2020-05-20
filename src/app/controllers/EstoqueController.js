@@ -3,11 +3,8 @@ import Estoque from '../models/Estoque';
 
 class EstoqueController {
   async index(req, res) {
-    const estoque = await Estoque.findAll({
+    const listaEstoque = await Estoque.findAll({
       where: {
-        codigo: {
-          [Op.eq]: 172,
-        },
         quantidade: {
           [Op.gt]: 0,
         },
@@ -18,18 +15,29 @@ class EstoqueController {
         desconto: {
           [Op.not]: null,
         },
-        // inipromo: {
-        //   [Op.lte]: Date.now(),
-        // },
-        // fimpromo: {
-        //   [Op.gte]: Date.now(),
-        // },
       },
     });
 
-    return res.json({
-      estoque,
+    const estoque = [];
+
+    listaEstoque.forEach((item) => {
+      if (
+        item.inipromo <= Date.now() &&
+        item.fimpromo >= Date.now() &&
+        item.desconto !== 0 &&
+        item.desconto <= item.preco
+      ) {
+        item.preco = item.desconto;
+      }
+
+      estoque.push({
+        ean: item.barra,
+        preco: item.preco,
+        estoque: item.quantidade,
+      });
     });
+
+    return res.json({ estoque });
   }
 }
 
